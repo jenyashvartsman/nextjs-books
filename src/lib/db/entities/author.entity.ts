@@ -1,6 +1,7 @@
-import { Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Book } from "./book.entity";
 
-@Entity({ name: "author" })
+@Entity()
 export class Author {
   @PrimaryGeneratedColumn("uuid")
   id!: string;
@@ -8,6 +9,9 @@ export class Author {
   @Column({ type: "varchar", length: 255 })
   name!: string;
 
-  @Column({ type: "text", name: "image_url" })
+  @Column({ type: "text" })
   imageUrl!: string;
+
+  @OneToMany(() => Book, (book) => book.author)
+  books!: Book[];
 }

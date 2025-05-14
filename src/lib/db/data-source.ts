@@ -2,6 +2,8 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 import { Author } from "./entities/author.entity";
 import * as dotenv from "dotenv";
+import { Book } from "./entities/book.entity";
+import { Genre } from "./entities/genre.entity";
 
 dotenv.config();
 
@@ -14,5 +16,5 @@ export const AppDataSource = new DataSource({
   database: process.env.DATABASE_NAME,
   synchronize: true,
   logging: false,
-  entities: [Author],
+  entities: [Author, Book, Genre],
 });
