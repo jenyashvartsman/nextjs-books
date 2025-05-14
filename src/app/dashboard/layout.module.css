@@ -1,0 +1,11 @@
+.dashboard {
+  min-height: 100vh;
+}
+
+.dashboard__header {
+  padding: 2rem 4rem;
+}
+
+.dashboard__main {
+  padding: 1rem 4rem;
+}
