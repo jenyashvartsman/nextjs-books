@@ -1,23 +1,23 @@
 import "reflect-metadata";
-import { AppDataSource } from "../src/lib/db/data-source";
-import { Author } from "../src/lib/db/entities/author.entity";
-import { Book } from "../src/lib/db/entities/book.entity";
-import { Genre } from "../src/lib/db/entities/genre.entity";
+import { getAppDataSource } from "../src/lib/database/init-data-source";
+import { Author } from "../src/lib/entities/author.entity";
+import { Book } from "../src/lib/entities/book.entity";
+import { Genre } from "../src/lib/entities/genre.entity";
 import { faker } from "@faker-js/faker";
 
 async function seed() {
   console.log("Seeding database...");
 
-  await AppDataSource.initialize();
+  const appDataSource = await getAppDataSource();
   console.log("Connected to database.");
 
   console.log("Resetting database...");
-  await AppDataSource.dropDatabase();
-  await AppDataSource.synchronize();
+  await appDataSource.dropDatabase();
+  await appDataSource.synchronize();
 
-  const authorRepo = AppDataSource.getRepository(Author);
-  const genreRepo = AppDataSource.getRepository(Genre);
-  const bookRepo = AppDataSource.getRepository(Book);
+  const authorRepo = appDataSource.getRepository(Author);
+  const genreRepo = appDataSource.getRepository(Genre);
+  const bookRepo = appDataSource.getRepository(Book);
 
   console.log("Seeding genres...");
   const genreNames = [
@@ -64,7 +64,7 @@ async function seed() {
   await bookRepo.save(books);
 
   console.log("✅ Seed complete.");
-  await AppDataSource.destroy();
+  await appDataSource.destroy();
 }
 
 seed().catch((err) => {
