@@ -1,18 +1,42 @@
+"use client";
+
 import Link from "next/link";
 import styles from "./header.module.css";
+import { usePathname } from "next/navigation";
+
+const links: { href: string; label: string }[] = [
+  { href: "/dashboard", label: "Dashboard" },
+  { href: "/dashboard/books", label: "Books" },
+  { href: "/dashboard/authors", label: "Authors" },
+  { href: "/dashboard/genres", label: "Genres" },
+];
 
 export default function Header() {
+  const pathname = usePathname();
+
   return (
     <header className={styles.header}>
-      <h3>Books App</h3>
+      <h3 className={styles.header__appName}>Books App</h3>
 
       <div className={styles.header__nav}>
-        <Link href="/dashboard">Dashboard</Link>
-        <Link href="/dashboard/books">Books</Link>
-        <Link href="/dashboard/authors">Authors</Link>
-        <Link href="/dashboard/genres">Genres</Link>
+        {links.map((link) => (
+          <Link
+            className={
+              styles.header__navLink +
+              (pathname === link.href
+                ? ` ${styles["header__navLink--active"]}`
+                : "")
+            }
+            key={link.href}
+            href={link.href}
+          >
+            {link.label}
+          </Link>
+        ))}
         <span> | </span>
-        <Link href="/">Back to home</Link>
+        <Link className={styles.header__homeLink} href="/">
+          Back to home
+        </Link>
       </div>
     </header>
   );

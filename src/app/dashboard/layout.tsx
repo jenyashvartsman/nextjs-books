@@ -9,7 +9,9 @@ export default function DashboardLayout({
   return (
     <div className={styles.dashboard}>
       <div className={styles.dashboard__header}>
-        <Header />
+        <div className={styles.dashboard__headerInner}>
+          <Header />
+        </div>
       </div>
 
       <main className={styles.dashboard__main}>{children}</main>

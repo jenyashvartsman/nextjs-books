@@ -5,8 +5,46 @@
   gap: 2rem;
 }
 
+.header__appName {
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--text-color-secondary);
+}
+
 .header__nav {
   display: flex;
   align-items: center;
-  gap: 2rem;
+  gap: 1.5rem;
+}
+
+.header__navLink {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-color-primary);
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.header__navLink:hover {
+  transform: scale(1.15);
+  color: var(--text-color-secondary);
+}
+
+.header__navLink--active {
+  color: var(--text-color-secondary);
+}
+
+.header__homeLink {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--text-color-secondary);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  margin-left: -1rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease-in-out;
+}
+
+.header__homeLink:hover {
+  background-color: var(--bg-color-secondary);
 }

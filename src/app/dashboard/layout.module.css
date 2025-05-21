@@ -1,11 +1,33 @@
 .dashboard {
+  position: relative;
   min-height: 100vh;
 }
 
 .dashboard__header {
-  padding: 2rem 4rem;
+  z-index: 2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4.5rem;
+  display: flex;
+  align-items: center;
+  background-color: var(--bg-color-tertiary);
+}
+
+.dashboard__headerInner {
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 2rem;
 }
 
 .dashboard__main {
-  padding: 1rem 4rem;
+  position: absolute;
+  top: 4.5rem;
+  left: 0;
+  right: 0;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 3rem 2rem;
 }
